@@ -1,0 +1,14 @@
+# library for PatchMatch
+# Creat by LE Thuc Trinh: 10/11/2015
+cmake_minimum_required(VERSION 2.8)
+project(PatchMatch3D)
+
+set(INCLUDE_DIR )
+include_directories(${CMAKE_SOURCE_DIR}/Image_structures)
+include_directories(${PatchMatch3D_SOURCE_DIR}/Patch_match)
+include_directories(${PatchMatch3D_SOURCE_DIR}/Reconstruction)
+
+aux_source_directory( ./Image_structures SOURCE_FILES)
+aux_source_directory( ./Patch_match SOURCE_FILES)
+aux_source_directory( ./Reconstruction SOURCE_FILES)
+add_library(Lib ${SOURCE_FILES})
