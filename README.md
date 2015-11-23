@@ -1,2 +1,2 @@
 # Inpainting_video
-Inpainting video by non-local patch-based method
+Inpainting video by non-local patch-based method.
