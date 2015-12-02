@@ -1,0 +1,41 @@
+﻿small improve in propagation step of PatchMatch
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   Video_inpainting_BSD_license/CmakeLists.txt.user
+#	modified:   Video_inpainting_BSD_license/Matlab_functions/NN_visualisation/analyse_shift_volume.m
+#	modified:   Video_inpainting_BSD_license/Matlab_functions/NN_visualisation/initialise_analysis_figure.m
+#	modified:   Video_inpainting_BSD_license/Matlab_functions/draw_occlusion.m
+#	deleted:    Video_inpainting_BSD_license/Matlab_functions/plot_disp_field_3D.asv
+#	modified:   Video_inpainting_BSD_license/Matlab_functions/plot_disp_field_3D.m
+#	deleted:    Video_inpainting_BSD_license/Matlab_functions/plot_disp_field_hsv.asv
+#	modified:   Video_inpainting_BSD_license/Matlab_functions/plot_disp_field_hsv.m
+#	deleted:    Video_inpainting_BSD_license/Matlab_functions/show_before_after_frames_images.asv
+#	modified:   Video_inpainting_BSD_license/Patch_match/patch_match.cpp
+#	modified:   Video_inpainting_BSD_license/Patch_match/patch_match_measure.cpp
+#	modified:   Video_inpainting_BSD_license/Patch_match/patch_match_measure.h
+#	modified:   Video_inpainting_BSD_license/Patch_match/patch_match_tools.cpp
+#	modified:   Video_inpainting_BSD_license/Patch_match/spatio_temporal_patch_match_mex.cpp
+#	modified:   Video_inpainting_BSD_license/Patch_match/spatio_temporal_patch_match_mex.mexw64
+#	modified:   Video_inpainting_BSD_license/Reconstruction/reconstruct_video_and_features_mex.mexw64
+#	modified:   Video_inpainting_BSD_license/Reconstruction/reconstruct_video_mex.mexw64
+#	deleted:    Video_inpainting_BSD_license/construct_Video.asv
+#	modified:   Video_inpainting_BSD_license/construct_Video.m
+#	modified:   Video_inpainting_BSD_license/init_coarsest_level.m
+#	modified:   Video_inpainting_BSD_license/inpaint_video.m
+#	modified:   Video_inpainting_BSD_license/read_video.m
+#	modified:   Video_inpainting_BSD_license/script_inpainting_initvideo.m
+#	modified:   Video_inpainting_BSD_license/script_inpaiting_video.m
+#	modified:   Video_inpainting_BSD_license/seed_random_numbers.mexw64
+#	modified:   Video_inpainting_BSD_license/seqImage_to_aviVideo.m
+#	new file:   Video_inpainting_BSD_license/test_dispField.m
+#	new file:   Video_inpainting_BSD_license/time.txt
+#	modified:   Video_inpainting_BSD_license/video_inpainting_demo.m
+#
+# Untracked files:
+#	Video_inpainting_BSD_license/Output/
+#
+

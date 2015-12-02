@@ -12,4 +12,8 @@
     float ssd_patch_measure(nTupleVolume<T> *imgVolA, nTupleVolume<T> *imgVolB, nTupleVolume<T> *dispField, nTupleVolume<T> *occVol, int xA, int yA, int tA,
                     int xB, int yB, int tB, float minVal, const parameterStruct *params);
 
+    template <class T>
+    float ssd_patch_measure_propagate(nTupleVolume<T> *imgVolA, nTupleVolume<T> *imgVolB, nTupleVolume<T> *dispField, nTupleVolume<T> *occVol, int xA, int yA, int tA,
+                    int xB, int yB, int tB, float minVal, const parameterStruct *params, int dirPropagate);
+
 #endif

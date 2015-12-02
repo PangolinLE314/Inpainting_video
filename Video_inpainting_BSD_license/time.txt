@@ -1,0 +1,25 @@
+Test patchsize timeFilename: chessboard  Patchsize 3 Time:  50.53 
+Filename: chessboard  Patchsize 5 Time:  98.19 
+Filename: chessboard  Patchsize 7 Time: 110.45 
+Filename: chessboard  Patchsize 9 Time: 176.20 
+Filename: ball  Patchsize 3 Time: 519.94 
+Filename: ball  Patchsize 5 Time: 1943.66 
+Filename: airport  Patchsize 3 Time: 150.19 
+Filename: airport  Patchsize 5 Time: 414.51 
+Filename: airport  Patchsize 7 Time: 1128.80 
+Filename: airport  Patchsize 9 Time: 2798.38 
+Filename: chessboard  Patchsize 3 Time:  32.76 
+Filename: chessboard  Patchsize 5 Time:  41.43 
+Filename: chessboard  Patchsize 7 Time:  76.42 
+Filename: chessboard  Patchsize 9 Time: 124.53 
+Filename: airport  Patchsize 3 Time: 124.42 
+Filename: airport  Patchsize 5 Time: 431.38 
+Filename: airport  Patchsize 7 Time: 1285.86 
+Filename: airport  Patchsize 9 Time: 3154.84 
+Filename: chessboard  Patchsize 5 Time:  25.83 
+Filename: chessboard  Patchsize 7 Time:  42.97 
+Filename: chessboard  Patchsize 5 Time:  30.60 
+Filename: chessboard  Patchsize 5 Time:  28.98 
+Filename: chessboard  Patchsize 5 Time:  25.27 
+Filename: chessboard  Patchsize 5 Time:  25.26 
+Filename: chessboard  Patchsize 5 Time:  30.23 

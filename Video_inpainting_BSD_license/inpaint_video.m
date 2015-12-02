@@ -133,9 +133,9 @@ for ii=maxLevel:-1:1
             shiftVol = spatio_temporal_patch_match_mex( imgVol, imgVol,...
                 patchMatchParams,firstGuess,occVolDilate,occVolDilate);
             
-            if (exist('stop_and_debug.txt'))
+         %   if (exist('stop_and_debug.txt'))
                 keyboard;
-            end
+         %   end
             
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %carry out the reconstruction

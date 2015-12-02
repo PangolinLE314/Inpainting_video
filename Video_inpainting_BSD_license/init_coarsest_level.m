@@ -40,12 +40,14 @@ disp(X)
     %carry out the 3D patchMatch
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %calculate PatchMatch3D from imgVol
+    
     shiftVol = spatio_temporal_patch_match_mex(imgVol, imgVol,...
         patchMatchParams,firstGuess,occVolPatchMatch,occVolDilate);
-    
-    if (exist('stop_and_debug.txt'))
-        keyboard;
-    end
+  %  keyboard;
+   
+  %  if (exist('stop_and_debug.txt'))
+      
+  %  end
     
     %occVolErode_show=occVolErode(:,:,1);
     %occVolBorder_show=occVolBorder(:,:,1)

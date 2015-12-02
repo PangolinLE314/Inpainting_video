@@ -131,9 +131,10 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         else
             imgVolModTemp = NULL;
         
-        mexPrintf("Number of iterations : %d\n",patchMatchParams->nIters);
-        mexPrintf("Patch sizes : %d %d %d\n",patchMatchParams->patchSizeX,patchMatchParams->patchSizeY,patchMatchParams->patchSizeT);
-        mexPrintf("x : %d\ny : %d\nt : %d\n",(int)imgSizesA[2],(int)imgSizesA[1],(int)imgSizesA[3]);
+       mexPrintf("-----------------------------\n");
+        // mexPrintf("Number of iterations : %d\n",patchMatchParams->nIters);
+       // mexPrintf("Patch sizes : %d %d %d\n",patchMatchParams->patchSizeX,patchMatchParams->patchSizeY,patchMatchParams->patchSizeT);
+       // mexPrintf("x : %d\ny : %d\nt : %d\n",(int)imgSizesA[2],(int)imgSizesA[1],(int)imgSizesA[3]);
         
         //patch match execution
         dispField = wrapper_patch_Match_ANN<float>(imgVolATemp, imgVolBTemp, firstGuessVolTemp, imgVolOccTemp,imgVolModTemp,(int)(imgSizesA[2]), (int)(imgSizesA[1]), (int)(imgSizesA[3]), 

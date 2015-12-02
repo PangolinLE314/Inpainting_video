@@ -1,43 +1,4 @@
-script_inpainting_initvideo;
-%% This part do inpainting video
-disp('Starting the video inpainting ! Hold on to your hats !!!');
-profile clear;
-profile on;
-
-parameter = {videoFile,occlusionFile,'maxLevel',3,'textureFeaturesActivated',1};
-inpainting_parameters = parameter(3:end);
-inpainting_parameters{end+1} = 'file';
-inpainting_parameters{end+1} = file;
-imgVolIn= single(permute(imgVol,[3 1 2 4]));
-occVolIn= occVol;
-%FIXED PARMETERS !!!
-%GAUSSIAN PYRAMID PARAMETERS
-filterSize = 3;    %fixed
-scaleStep = 0.5;    %fixed
-sigma = 1.5;    %fixed
-useAllPatches = 0;
-reconstructionType = 0;
-[maxLevel,patchSizeX,patchSizeY,patchSizeT,textureFeaturesActivated,sigmaColour,file] = ...
-    parse_inpaint_parameters(inpainting_parameters);
-%patchMatch params
-patchSize = [patchSizeX patchSizeY min(patchSizeT,size(imgVolIn,4))]; %size of small cube to search in PatchMatch
-patchMatchParams.patchSize = [patchSizeX patchSizeY min(patchSizeT,size(imgVolIn,4))];
-patchMatchParams.patchSizeX = patchSize(1);
-patchMatchParams.patchSizeY = patchSize(2);
-patchMatchParams.patchSizeT = patchSize(3);
-patchMatchParams.w = max([size(imgVolIn,2) size(imgVolIn,3) size(imgVolIn,4)]);  % maximum width (not sure)
-patchMatchParams.alpha = 0.5;   %fixed
-patchMatchParams.fullSearch = 0;
-patchMatchParams.partialComparison = 1;
-patchMatchParams.nbItersPatchMatch = 10;
-patchMatchParams.patchIndexing = 0;
-patchMatchParams.reconstructionType = reconstructionType;
-
-%parameters concerning the iterations of the nearest neighbour search
-%and reconstruction
-maxNbIterations = 20;
-residualThresh = 0.1;
-
+%%
 t1 = tic;
 
 %%% get pyramid volumes
@@ -112,7 +73,7 @@ for ii=maxLevel:-1:1                       %start with coarsest level
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     while (pp<= maxNbIterations && residual > residualThresh) % loop with maxIterations et residual < resThresh
         %%
-        X=sprintf('Looping until convergence : %d',pp); disp(X)
+        X=sprintf('=================\n Looping until convergence : %d',pp); disp(X)
         sizeImgVol = size(imgVol);
         imgVolIterMinusOne = imgVol+1-1; % question: what is this for?
         
@@ -128,18 +89,18 @@ for ii=maxLevel:-1:1                       %start with coarsest level
             
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %carry out the 3D patchMatch
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
             
             shiftVol = spatio_temporal_patch_match_mex( imgVol, imgVol,...
                 patchMatchParams,firstGuess,occVolDilate,occVolDilate);
-            
-            if (exist('stop_and_debug.txt'))
-                keyboard;
-            end
+         %   if (exist('stop_and_debug.txt'))
+         %       keyboard;
+         %   end
             
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %carry out the reconstruction
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            tRec=tic;
             if (exist('featurePyramid','var') && exist('shiftVol'))
                 [imgVol,gradX,gradY,normGradX,normGradY] = reconstruct_video_and_features_mex(imgVol,occVol,...
                     shiftVol,patchMatchParams,...
@@ -150,7 +111,8 @@ for ii=maxLevel:-1:1                       %start with coarsest level
                     shiftVol,patchMatchParams,...
                     sigmaColour,useAllPatches,reconstructionType);%
             end
-            
+            reconstructionTime=toc(tRec);
+            X=sprintf('Reconstruction time %f',reconstructionTime); disp(X)
             iterationNb = iterationNb+1;
         else
             init_coarsest_level;
@@ -163,7 +125,9 @@ for ii=maxLevel:-1:1                       %start with coarsest level
         useAllPatches = 1;  patchMatchParams.useAllPatches = 1;
         
         %calculate the residual to see if we terminate
-        residual = sum(abs(imgVolIterMinusOne(:) - imgVol(:)))/(single(3*sum(occVol(:)>0)))
+        residual = sum(abs(imgVolIterMinusOne(:) - imgVol(:)))/(single(3*sum(occVol(:)>0)));
+        X=sprintf('Residual : %f',residual); disp(X)
+        
     end
     
     
@@ -196,16 +160,22 @@ for ii=maxLevel:-1:1                       %start with coarsest level
 end
 imgVolOut=imgVol;
 %Write to output Image:
-cd Output;
-if(~exist(file,'dir'))
-    mkdir(file);
+cd(rootDataset);
+fileOut=strcat(file,num2str(patchSizeX));
+if(~exist(fileOut,'dir'))
+    mkdir(fileOut);
 end;
-outputDir= fullfile(currDir,'Output',file);
+outputDir= fullfile(rootDataset,fileOut);
 cd(outputDir);
-write_image_volume(imgVolOut,strcat(file,'inpainted'));
-cd ../..
+write_image_volume(imgVolOut,strcat(fileOut,'inpainted'));
+%write time to txt file
+cd(currDir);
 %create Video file
-seqImage_to_aviVideo(outputDir,'png',fullfile(currDir,'Content'),outputVideoFile);
+seqImage_to_aviVideo(outputDir,'png',rootDataset,outputVideoFile);
+fileID=fopen('time.txt','a+');
+fprintf(fileID,'Filename: %s  Patchsize %d Time: %6.2f \n', file ,patchSizeX, t2);
+fclose(fileID);
+
 
 
 

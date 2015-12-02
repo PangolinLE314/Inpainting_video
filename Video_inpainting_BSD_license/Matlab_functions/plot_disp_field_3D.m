@@ -2,6 +2,7 @@
 
 function[figHandle] = plot_disp_field_3D(dispField,patchSize, occlusionMask)
 
+dispField=permute(dispField,[2 3 4 1]);
     if (ischar(dispField))
         dispField = load(dispField);
         dispField = dispField.dispField;

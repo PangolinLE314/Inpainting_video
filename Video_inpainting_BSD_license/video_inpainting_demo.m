@@ -11,8 +11,8 @@ restoredefaultpath;
 % videoFile = './Content/beach_umbrella.avi';
 % occlusionFile = './Content/beach_umbrella_occlusion.png';
 
-videoFile = './Content/cup.avi';
-occlusionFile = './Content/cupOcc.avi';
+videoFile = './Content/chessboard.avi';
+occlusionFile = './Content/chessboardOcc.avi';
 
 start_inpaint_video(videoFile,occlusionFile,'maxLevel',3,'textureFeaturesActivated',1);
 

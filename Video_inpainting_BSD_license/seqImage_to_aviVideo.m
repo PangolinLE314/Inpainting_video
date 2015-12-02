@@ -19,9 +19,9 @@ for ii = 1:length(imageNames)
         structEl= strel('arbitrary', ones(3,3));
         mask_temp=imerode(mask,structEl);
         mask_temp= mask-mask_temp;
-        img(:,:,1)=img(:,:,1)+uint8(mask_temp*255);
-        img(:,:,2)=img(:,:,2)+uint8(mask_temp*255);
-        img(:,:,3)=img(:,:,3)+uint8(mask_temp*255);
+        img(:,:,1)=img(:,:,1)+uint8(mask*255);
+        img(:,:,2)=img(:,:,2)+uint8(mask*255);
+        img(:,:,3)=img(:,:,3)+uint8(mask*255);
     end
     writeVideo(outputVideo,img);
 end

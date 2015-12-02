@@ -12,10 +12,9 @@
 
 function[hPrinciple,correspondanceMat,hSubplot,lineHandle] = initialise_analysis_figure(fCurrent,analysis,imgVolA,imgVolB,shiftVol,frameNum,occVol,...
     patchSize,onlyCorrespondingFrames,colour,screenSize,correspondanceMat)
-
     %parameters
     maxCorrespondancies = 10*10;
-
+        
     %determine the sizes of the subplots : by default, we put the main
     %image above (most images are wider than they are high)
     imgVolSizeA = size(imgVolA);
@@ -42,7 +41,7 @@ function[hPrinciple,correspondanceMat,hSubplot,lineHandle] = initialise_analysis
     set(hPrinciple,'UserData',-1);
     %%%% draw a line around the occlusion
     if (~isempty(occVol))
-        draw_occlusion(hPrinciple,occVol,frameNum);
+        draw_occlusion(imgVolA,occVol,frameNum);
     end
 
     for ii=1:imgVolSizeB(3)   %up to the maximum frame

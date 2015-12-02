@@ -166,7 +166,7 @@ nTupleVolume<T> * patch_match_ANN(nTupleVolume<T> *imgVolA, nTupleVolume<T> *img
     }
     else    //normal patchMatch
     {
-        mexPrintf("Initialisation\n");
+        mexPrintf("Initialisation PatchMatch\n");
         initialise_displacement_field(dispField, imgVolA, imgVolB, firstGuessVol, imgVolOcc,params);
         //show_nTuple_volume(dispField);
 
@@ -175,7 +175,7 @@ nTupleVolume<T> * patch_match_ANN(nTupleVolume<T> *imgVolA, nTupleVolume<T> *img
             return(dispField);
         //Start propagation:
         for (i=0; i<(params->nIters); i++)
-        {
+       {
             startTime = clock();
             //Start propagation:
             nbModified = patch_match_propagation(dispField, imgVolA, imgVolB,imgVolOcc,imgVolMod,params,i);
